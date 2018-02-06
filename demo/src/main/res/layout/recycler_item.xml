@@ -1,37 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    xmlns:tool="http://schemas.android.com/tools"
+    android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/expand_button"
-        style="@style/TextAppearance.AppCompat.Medium"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/list_item_background"
-        android:elevation="6dp"
-        android:foreground="?selectableItemBackground"
-        android:padding="16dp" />
+        android:id="@+id/itemCard"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        app:cardCornerRadius="0dp"
+        android:backgroundTint="@color/primary"
+        app:cardUseCompatPadding="false">
 
-    <net.cachapa.expandablelayout.ExpandableLayout
-        android:id="@+id/expandable_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        app:el_duration="300"
-        app:el_expanded="false">
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="4dp"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="Content"
-            android:textColor="#fff" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </net.cachapa.expandablelayout.ExpandableLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:id="@+id/expand_button"
+                android:foreground="?selectableItemBackgroundBorderless"
+                android:orientation="horizontal">
 
-</LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/fold_grade_background"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/primary"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/fold_letter_grade_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        tool:text="A" />
+
+                    <TextView
+                        android:id="@+id/fold_percentage_grade_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fold_letter_grade_tv"
+                        android:layout_marginTop="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        tool:text="100" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fold_background"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:id="@+id/fold_subject_title_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="sans-serif-light"
+                        android:maxLines="1"
+                        android:textAppearance="@android:style/TextAppearance.Material.Title"
+                        android:textColor="@color/text_primary_black"
+                        android:textSize="20sp"
+                        tool:text="Science 10" />
+
+                    <TextView
+                        android:id="@+id/fold_teacher_name_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fold_subject_title_tv"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/text_tertiary_black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/fold_block_letter_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fold_teacher_name_tv"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/text_tertiary_black"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:el_expanded="false">
+
+                <RelativeLayout
+                    android:id="@+id/detail_header_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:foreground="?selectableItemBackgroundBorderless">
+
+                    <RelativeLayout
+                        android:id="@+id/unfold_header_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:background="@color/primary">
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/unfold_trend_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/unfold_percentage_grade_tv"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginTop="13dp"
+                            android:layout_toStartOf="@+id/unfold_percentage_grade_tv"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp"
+                            app:cardUseCompatPadding="true">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp">
+
+                                <ImageView
+                                    android:id="@+id/unfold_trend_image"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="4dp"
+                                    android:paddingTop="1dp" />
+
+                                <TextView
+                                    android:id="@+id/unfold_trend_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginBottom="2dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_toEndOf="@+id/unfold_trend_image"
+                                    android:textColor="@color/B_score_green_dark"
+                                    android:textSize="15sp"
+                                    tool:text="1" />
+
+                            </RelativeLayout>
+
+                        </android.support.v7.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/unfold_percentage_grade_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginEnd="15dp"
+                            android:fontFamily="sans-serif-light"
+                            android:textAppearance="@android:style/TextAppearance.Material.Title"
+                            android:textColor="@color/white"
+                            android:textSize="65sp"
+                            tool:text="100" />
+
+                        <TextView
+                            android:id="@+id/detail_subject_title_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_toStartOf="@id/unfold_percentage_grade_tv"
+                            android:fontFamily="sans-serif-light"
+                            android:maxLines="2"
+                            android:textAppearance="@android:style/TextAppearance.Material.Title"
+                            android:textColor="@color/white"
+                            android:textSize="22sp"
+                            tool:text="Pre-Calculus 11" />
+
+                        <TextView
+                            android:id="@+id/unfold_teacher_name_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/detail_subject_title_tv"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginStart="20dp"
+                            android:textColor="@color/white_0_20"
+                            android:textSize="13sp"
+                            tool:text="Alex Appiah" />
+
+                    </RelativeLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/unfolded_grade_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@id/unfold_header_view"
+                        android:layout_marginTop="30dp"
+                        android:minHeight="120dp">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/floating_action_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="112dp"
+                        app:rippleColor="@color/white" />
+
+                </RelativeLayout>
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

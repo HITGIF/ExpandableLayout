@@ -9,13 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String[] TAB_TITLES = {
-            "Simple",
-            "Accordion",
-            "Recycler",
-            "Horizontal",
-            "Manual"
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,30 +29,17 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return TAB_TITLES.length;
+            return 1;
         }
 
         @Override
         public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return new SimpleFragment();
-                case 1:
-                    return new AccordionFragment();
-                case 2:
-                    return new RecyclerViewFragment();
-                case 3:
-                    return new HorizontalFragment();
-                case 4:
-                    return new ManualFragment();
-            }
-
-            throw new IllegalStateException("There's no fragment for position " + position);
+            return new RecyclerViewFragment();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return TAB_TITLES[position];
+            return "";
         }
     }
 }
